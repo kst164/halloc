@@ -1,0 +1,29 @@
+.container{
+    width: 100%;
+}
+
+.header{
+    max-height: 50px;
+}
+
+.main-stuff{
+    overflow-y: hidden;
+    max-height: 500px;
+}
+
+.column1{
+    background-color: aquamarine;
+    width: 20%;
+    margin-right: 80%;
+}
+
+.column2{
+    width: 80%;
+    margin-left: 20%;
+    padding-left: 50px;
+    margin-top: -1050px;
+}
+
+@media screen and (max-height: 450px){
+    .column1 {padding-top: 15px;}
+}

@@ -1,0 +1,66 @@
+.hoverbox{
+    /* position: absolute;
+    top:-220%;
+    left:-375%; */
+    background-color: bisque;
+    width: 400%;
+    height: 85px;
+    border-radius: 25px;
+  }
+  
+  .hoverbox-head{
+    margin-top: 10px;
+    margin-bottom: -20px;
+  }
+  
+  .hoverbox-ul{
+    /* margin-top: -20px; */
+    line-height: 1.2em;
+    margin-bottom: 10%;
+  }
+  
+  .hoverbox-li{
+    margin-left: -10px;
+  }
+  
+  .hoverbox-span{
+    position: relative;
+    left: -23px;
+  }
+  
+  .room0, .room1, .room2 {
+    border: 2px solid black;
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 40px;
+    height: 7vh;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 50px;
+    border-radius: 5px;
+  }
+  
+  .room0 {
+    background: blue;
+    color: white;
+  }
+  
+  
+  .room1 {
+    background: yellow;
+  }
+  
+  
+  .room2 {
+    background: grey;
+    color: white;
+  }
+  
+  .room0:hover, .room1:hover {
+    transform: scale(1.1);
+  }
+  
+  

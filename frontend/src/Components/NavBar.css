@@ -1,0 +1,11 @@
+.navbar {
+    background-color: rgb(13, 4, 63);
+    padding-left: 50px;
+    padding-right: 50px;
+    min-height: 75px;
+}
+
+.nav-link a {
+    padding-left: 10px;
+    padding-right: 10px;
+}

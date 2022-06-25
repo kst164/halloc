@@ -14,11 +14,14 @@ class NavBar extends Component {
   //Function to render options (from state)
   renderOptions = () => {
     return this.state.options.map((myOption) => {
-      <li className="nav-item fs-4">
-        <a className="nav-link text-end" href={myOption.link}>
-          {myOption.name}
-        </a>
-      </li>;
+      console.log(myOption);
+      return (
+        <li key={myOption} className="nav-item fs-4">
+          <a className="nav-link text-end" href={myOption.link}>
+            {myOption.name}
+          </a>
+        </li>
+      );
     });
   };
 
@@ -27,7 +30,7 @@ class NavBar extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark">
         <a className="navbar-brand fw-bold fs-2" href="#">
-          Covid Management System
+          HALLOC
         </a>
 
         <div

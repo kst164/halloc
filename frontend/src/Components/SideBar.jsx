@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FloorStats from "./FloorStats";
+import "./SideBar.css";
 
 class SideBar extends Component {
   state = {
@@ -14,18 +15,29 @@ class SideBar extends Component {
     ],
   };
 
+  generateFloorStats = () => {
+    return this.state.floors.map((myFloor) => {
+      return (
+        <React.Fragment>
+          {/*Rendering Floor number*/}
+          <a>Floor #{myFloor.level}</a>
+
+          {/*Rendering Breadcrumbs*/}
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item avl">{myFloor.available}</li>
+            <li class="breadcrumb-item bkd">{myFloor.booked}</li>
+            <li class="breadcrumb-item occ">{myFloor.occupied}</li>
+          </ol>
+        </React.Fragment>
+      );
+    });
+  };
+
   render() {
     return (
       <div className="sidebar">
         <h4>Floor Stats</h4>
-        {this.state.floors.map((myFloor) => {
-          <FloorStats
-            level={myFloor.level}
-            available={myFloor.available}
-            booked={myFloor.booked}
-            occupied={myFloor.occupied}
-          />;
-        })}
+        {this.generateFloorStats()}
       </div>
     );
   }

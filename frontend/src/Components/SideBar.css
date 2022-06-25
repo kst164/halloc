@@ -1,27 +1,16 @@
-.sidebar {
-    margin: 0;
-    padding-left: 0;
-    width: 200px;
-    background-color: #F2EBE9;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
+.avl{
+    background-color: rgb(47, 149, 250);
 }
 
-.sidebar h4 {
-    padding: 16px;
-    background-color: #A5BECC;
-    color: black;    
+.bkd{
+    background-color: yellow;
 }
 
-.sidebar a {
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
+.occ{
+    background-color: rgb(173, 171, 171);
 }
 
-.sidebar a:hover {
-    background-color: rgb(120, 100, 255);
-    color: white;
+
+.breadcrumb-item{
+    text-align: center;
 }

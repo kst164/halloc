@@ -15,7 +15,7 @@ class RoomTable extends Component {
           <td>{myApplicant.roll}</td>
           <td>{myApplicant.name}</td>
           <td>
-            <button type="button" className="btn btn-outline-info">
+            <button type="button" className="btn btn-outline-info" onClick={()=>this.props.onClick(myApplicant.name,myApplicant.roll)}>
               Accept
             </button>
           </td>

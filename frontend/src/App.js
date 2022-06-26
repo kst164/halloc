@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
-import Grid from './Pages/Grid';
+import React, {Component} from 'react';
+// import Grid from './Pages/Grid';
+// import HomeGen from './Pages/HomeGen';
+// import Login from './Pages/Login';
+// import HomeLog from './Pages/HomeLog';
+// import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import HomeGen from './Pages/HomeGen';
 import Login from './Pages/Login';
 import HomeLog from './Pages/HomeLog';
@@ -10,14 +14,14 @@ class App extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/grid' element={<Grid/>}/>
-                    <Route path='/login' element={<Login/>}/>
-                    <Route path='/' element={<HomeGen/>}/>
-                    <Route path='/loggedin' element={<HomeLog/>}/>
-                </Routes>
-            </BrowserRouter>
+             <BrowserRouter>
+                 <Routes>
+                     <Route path='/grid' element={<Grid/>}/>
+                     <Route path='/login' element={<Login/>}/>
+                     <Route path='/' element={<HomeGen/>}/>
+                     <Route path='/loggedin' element={<HomeLog/>}/>
+                 </Routes>
+             </BrowserRouter>
         );
     }
 }

@@ -10,13 +10,17 @@ const server = createServer(app);
 const io = new Server(server);
 const PORT = +(process.env.PORT) || 8000;
 
-app.use(bodyParser.json()); // convert req body to json wherever applicable
-app.use(router);
+const main = async () => {
+    app.use(bodyParser.json()); // convert req body to json wherever applicable
+    app.use(router);
 
-io.on("connection", (socket) => {
-    // TODO
-});
+    io.on("connection", (socket) => {
+        // TODO
+    });
 
-server.listen(PORT, _ => {
-    console.log(`Server started on port ${PORT}`);
-})
+    server.listen(PORT, _ => {
+        console.log(`Server started on port ${PORT}`);
+    })
+}
+
+main().catch(err => console.log(err))

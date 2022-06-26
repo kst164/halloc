@@ -30,6 +30,10 @@ class SideBar extends Component {
   //   });
   // };
 
+  state = {
+    isActive:  Array(7).fill(0),
+  };
+
   //Generates all floors mapped from this.state.floors
   //Passes each floor and changeFloor() methods to FloorStats object
   //PS: Don't push this higher, required here only! When pushing states to Grid.jsx, we will change state to props and pass from above.
@@ -40,10 +44,26 @@ class SideBar extends Component {
           key={myFloor.level}
           floor={myFloor}
           changeFloor={this.props.changeFloor}
+          isActive={this.state.isActive}
+          toggleActiveArray={() => this.toggleActiveArray(myFloor.level)}
         />
       );
     });
   };
+
+  toggleActiveArray(level){
+    let duparray = this.state.isActive;
+    for(let i = 0; i <= 6; i++){
+      if(!(i === level)){
+        duparray[i] = 0;
+      }
+      else duparray[i] = 1;
+    }
+    this.setState({
+      isActive: duparray
+    })
+    console.log(duparray);
+  }
 
   //Actually does sh*t
   render() {

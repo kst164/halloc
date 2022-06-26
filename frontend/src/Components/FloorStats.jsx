@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class FloorStats extends Component {
-  state = {};
+  
 
   //Render stuff (Each floor button and rooms' status)
   render() {
@@ -12,6 +12,11 @@ class FloorStats extends Component {
           className="myFloor"
           onClick={() => {
             this.props.changeFloor(this.props.floor.level);
+            this.props.toggleActiveArray();
+          }}
+          style={{
+            backgroundColor: this.props.isActive[this.props.floor.level] === 1 ? 'salmon' : '',
+            color: this.props.isActive[this.props.floor.level] === 1 ? 'white' : '',
           }}
         >
           Floor #{this.props.floor.level}

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./NavBar.css";
-
+import {Link} from 'react-router-dom';
 class NavBar extends Component {
   //State contains options that need to be rendered on NavBar
   state = {
     options: [
-      { name: "Home", link: "#Home" },
-      { name: "Sign In", link: "#SignIn" },
+      { name: "Home", link: "/" },
+      { name: "Sign In", link: "/login" },
       { name: "FAQ", link: "#FAQ" },
     ],
   };
@@ -17,9 +17,9 @@ class NavBar extends Component {
       console.log(myOption);
       return (
         <li key={myOption.name} className="nav-item fs-4">
-          <a className="nav-link text-end" href={myOption.link}>
+          <Link className="nav-link text-end" to={myOption.link}>
             {myOption.name}
-          </a>
+          </Link>
         </li>
       );
     });
@@ -29,9 +29,9 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark">
-        <a className="navbar-brand fw-bold fs-2" href="#">
+        <Link className="navbar-brand fw-bold fs-2" to="/">
           HALLOC
-        </a>
+        </Link>
 
         <div
           className="collapse navbar-collapse d-flex flex-row-reverse"

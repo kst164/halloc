@@ -9,37 +9,37 @@ import "./SideBar.css";
 //PPS: Try putting generate FloorStats, either to support creation of className = "floorStats" or push the function to Grid.jsx
 
 class SideBar extends Component {
-  state = {
-    floors: [
-      { level: 0, available: 24, booked: 0, occupied: 0 },
-      { level: 1, available: 24, booked: 0, occupied: 0 },
-      { level: 2, available: 24, booked: 0, occupied: 0 },
-      { level: 3, available: 24, booked: 0, occupied: 0 },
-      { level: 4, available: 24, booked: 0, occupied: 0 },
-      { level: 5, available: 24, booked: 0, occupied: 0 },
-      { level: 6, available: 24, booked: 0, occupied: 0 },
-    ],
-    currentLevel: null,
-  };
+  // state = {
+  //   floors: [
+  //     { level: 0, available: 24, booked: 0, occupied: 0 },
+  //     { level: 1, available: 24, booked: 0, occupied: 0 },
+  //     { level: 2, available: 24, booked: 0, occupied: 0 },
+  //     { level: 3, available: 24, booked: 0, occupied: 0 },
+  //     { level: 4, available: 24, booked: 0, occupied: 0 },
+  //     { level: 5, available: 24, booked: 0, occupied: 0 },
+  //     { level: 6, available: 24, booked: 0, occupied: 0 },
+  //   ],
+  //   currentLevel: null,
+  // };
 
   //Method to change current floor (current changes only on console)
-  changeFloor = (myFloorLevel) => {
-    console.log(this.state.currentLevel);
-    this.setState({
-      currentLevel: myFloorLevel,
-    });
-  };
+  // changeFloor = (myFloorLevel) => {
+  //   console.log(this.state.currentLevel);
+  //   this.setState({
+  //     currentLevel: myFloorLevel,
+  //   });
+  // };
 
   //Generates all floors mapped from this.state.floors
   //Passes each floor and changeFloor() methods to FloorStats object
   //PS: Don't push this higher, required here only! When pushing states to Grid.jsx, we will change state to props and pass from above.
   generateFloorStats = () => {
-    return this.state.floors.map((myFloor) => {
+    return this.props.floors.map((myFloor) => {
       return (
         <FloorStats
           key={myFloor.level}
           floor={myFloor}
-          changeFloor={this.changeFloor}
+          changeFloor={this.props.changeFloor}
         />
       );
     });

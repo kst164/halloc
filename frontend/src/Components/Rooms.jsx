@@ -36,8 +36,8 @@ export default class Room extends React.Component {
           className="room0"
           onClick={() => this.props.handleClick3()
           }
-          onMouseEnter={() => {this.handleMouse(); console.log("Just entered somewhere!!")}}
-          onMouseOut={() => {this.handleMouse(); console.log("Just left somewhere!!")}}
+          // onMouseEnter={() => {this.handleMouse(); console.log("Just entered somewhere!!")}}
+          // onMouseOut={() => {this.handleMouse(); console.log("Just left somewhere!!")}}
         >
 
         {this.props.roomno}

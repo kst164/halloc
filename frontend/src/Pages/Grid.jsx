@@ -60,7 +60,7 @@ class Grid extends Component {
         rooms: Array(24).fill(0),
       },
     ],
-    currentLevel: 4,
+    currentLevel: 5,
   };
 
   // //Functions
@@ -105,7 +105,7 @@ class Grid extends Component {
             duproom[i]++;
             return {
               ...e,
-              occupied: e.occupied - 1,
+              occupied: e.occupied + 1,
               booked: e.booked - 1,
               rooms: duproom,
             };
@@ -116,6 +116,11 @@ class Grid extends Component {
         }
       }),
     }));
+
+
+    
+
+
     // if(rooms[i] === 0)
     // {
     //   rooms[i]++;
@@ -137,6 +142,13 @@ class Grid extends Component {
     //     booked: booked,
     //     occupied: occupied,
     //   });
+  };
+
+  changeFloor = (myFloorLevel) => {
+    console.log(this.state.currentLevel);
+    this.setState({
+      currentLevel: myFloorLevel,
+    });
   };
 
   //Renders the j^th floor (Note to use this through a mapping of state variables)
@@ -166,6 +178,7 @@ class Grid extends Component {
           <SideBar
             floors={this.state.floors}
             currentLevel={this.state.currentLevel}
+            changeFloor = {this.changeFloor}
           />
           <div class="floorPlan">{this.renderFloor(this.state.currentLevel)}</div>
         </div>

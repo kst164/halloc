@@ -10,7 +10,8 @@
   
   .hoverbox-head{
     margin-top: 10px;
-    margin-bottom: -20px;
+    margin-bottom: 5px;
+    font-family: sans-serif;
   }
   
   .hoverbox-ul{

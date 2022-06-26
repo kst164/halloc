@@ -60,7 +60,7 @@ class Grid extends Component {
         rooms: Array(24).fill(0),
       },
     ],
-    currentLevel: null,
+    currentLevel: 4,
   };
 
   // //Functions
@@ -141,7 +141,12 @@ class Grid extends Component {
 
   //Renders the j^th floor (Note to use this through a mapping of state variables)
   renderFloor(j) {
-    return (
+    if(j === null){
+      return(
+        <h1>Please select a room</h1>
+      )
+    }
+    else return (
       <Floor
         floorno={this.state.floors[j].level}
         rooms={this.state.floors[j].rooms}
@@ -162,7 +167,7 @@ class Grid extends Component {
             floors={this.state.floors}
             currentLevel={this.state.currentLevel}
           />
-          <div class="floorPlan">{this.renderFloor(5)}</div>
+          <div class="floorPlan">{this.renderFloor(this.state.currentLevel)}</div>
         </div>
       </div>
     );

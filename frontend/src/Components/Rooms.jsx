@@ -43,7 +43,7 @@ export default class Room extends React.Component {
         {this.props.roomno}
         {this.state.isHovering && 
         <div className='hoverbox'>
-          <h4 className='hoverbox-head'>Room Number: {this.props.roomno}</h4> 
+          <h6 className='hoverbox-head'>Room Number: {this.props.roomno}</h6> 
           <ul className='hoverbox-ul'>
             <li className='hoverbox-li'><span className='hoverbox-span'>Occupant 1:</span></li>
             <li className='hoverbox-li'><span className='hoverbox-span'>Occupant 2:</span></li>

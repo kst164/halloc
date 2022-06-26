@@ -11,19 +11,36 @@ class HomeLog extends Component {
         <NavBar />
         <div className="main">
           <div className="content">
-            <h3>Some Latin Nonsense</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
             <h3>YOU ARE LOGGED IN</h3>
-            <h3>Conditional Rendering</h3>
-            <p></p>
+            <h3>About HALLOC</h3>
+            <p>
+              <em>HALLOC</em> or <em>Hostel ALLOCation</em> is designed to help
+              IITH students select their Hostel rooms efficiently with minimal
+              conflicts. Every student has the following options available upon
+              logging in through his/her IITH email id:
+            </p>
+
+            <h4>Grid</h4>
+            <p>
+              The "Grid" page allows you to select and view hostel rooms
+              (floor-wise). The page is refreshed on a continuous basis to
+              ensure updated information is available to the student.
+            </p>
+
+            <h4>MyRoom</h4>
+            <p>
+              This page shows all people who have applied to be your roommate if
+              you're looking for one. You can accept one of them and he/she will
+              be assigned to be your roommate. Note this only works if you
+              already have a room.
+            </p>
+
+            <h4>See Friends</h4>
+            <p>
+              This page allows you to see all people who have a room but are
+              looking for a roommate. This makes it easier for people to contact
+              others and become roommates.
+            </p>
           </div>
         </div>
       </div>

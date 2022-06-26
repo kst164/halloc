@@ -4,6 +4,7 @@ import HomeGen from './Pages/HomeGen';
 import Login from './Pages/Login';
 import HomeLog from './Pages/HomeLog';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import Protected from './Protected';
 class App extends Component {
     state = {}
 

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import NavBar from "../Components/NavBar";
-import SideBar from "../Components/SideBar";
 import "./HomeGen.css";
 
 class HomeGen extends Component {
@@ -11,7 +10,6 @@ class HomeGen extends Component {
       <div className="home">
         <NavBar />
         <div className="main">
-          <SideBar />
           <div className="content">
             <h3>Some Latin Nonsense</h3>
             <p>

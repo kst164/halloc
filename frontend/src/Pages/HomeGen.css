@@ -5,41 +5,13 @@
     min-height: 75px;
 }
 
-.sidebar {
-    margin: 0;
-    padding-left: 0;
-    width: 12%;
-    background-color: #F2EBE9;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-}
-
-.sidebar h4 {
-    padding: 1%;
-    background-color: #A5BECC;
-    color: black;    
-}
-
-.sidebar a {
-    display: block;
-    color: black;
-    padding: 1%;
-    text-decoration: none;
-}
-
-.sidebar a.myFloor:hover{
-    background-color: #A5BECC;
-    color: white;
-}
-
 .nav-link a {
     padding-left: 1%;
     padding-right: 1%;
 }
 
 div.content {
-    margin-left: 12%;
+    margin-left: 1%;
     padding: 1.5% 3%;
     height: 1000px;
     position: fixed;

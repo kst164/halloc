@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import "./Grid.css";
 import Floor from "../Components/Floors";
 import SideBar from "../Components/SideBar";
+import NavBar from "../Components/NavBar";
 
 class Grid extends Component {
   //state
@@ -154,19 +155,14 @@ class Grid extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="header">{/* <NavBar /> */}</div>
+      <div className="grid">
+        <NavBar />
         <div className="main">
-          <div className="column1">
-            <SideBar
-              floors={this.state.floors}
-              currentLevel={this.state.currentLevel}
-            />
-          </div>
-          <div className="column2">
-            {/* Put Actual Floor here, based on button click on side bar */}
-          </div>
-          <div className="poor">{this.renderFloor(5)}</div>
+          <SideBar
+            floors={this.state.floors}
+            currentLevel={this.state.currentLevel}
+          />
+          <div class="floorPlan">{this.renderFloor(5)}</div>
         </div>
       </div>
     );

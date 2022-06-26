@@ -1,28 +1,46 @@
-.container{
-    width: 100%;
+.navbar {
+    background-color: rgb(13, 4, 63);
+    padding-left: 3%;
+    padding-right: 3%;
+    min-height: 75px;
 }
 
-.header{
-    max-height: 50px;
+.sidebar {
+    margin: 0;
+    padding-left: 0;
+    width: 12%;
+    background-color: #F2EBE9;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
 }
 
-.main-stuff{
-    overflow-y: hidden;
-    max-height: 500px;
+.sidebar h4 {
+    padding: 1%;
+    background-color: #A5BECC;
+    color: black;    
 }
 
-.column1{
-    background-color: aquamarine;
-    width: 20%;
-    margin-right: 80%;
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 1%;
+    text-decoration: none;
 }
 
-.column2{
-    width: 80%;
-    margin-left: 20%;
-    padding-left: 50px;
+.sidebar a.myFloor:hover{
+    background-color: #A5BECC;
+    color: white;
 }
 
-@media screen and (max-height: 450px){
-    .column1 {padding-top: 15px;}
+.nav-link a {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+div.content {
+    margin-left: 12%;
+    padding: 1.5% 3%;
+    height: 1000px;
+    position: fixed;
 }

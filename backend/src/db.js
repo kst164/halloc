@@ -89,7 +89,7 @@ const newUserConnect = (name, rollno) => {
  * @param {string} errorMsg
  */
 const addUserToRoom = async (rollno, roomno, expectedMembers, errorMsg) => {
-    const room = await Room.findOne({ rollno });
+    const room = await Room.findOne({ roomno });
     if (room.occupants.length != expectedMembers) {
         throw new Error(errorMsg);
     } else {
@@ -103,8 +103,25 @@ const addUserToRoom = async (rollno, roomno, expectedMembers, errorMsg) => {
  * @param {Number} roomno
  */
 const giveUserRoom = (rollno, roomno) => {
-    return addUserToRoom(rollno, roomno, 0, "Sorry, this room is not empty");
+    return addUserToRoom(rollno, roomno, 0, "Sorry, this room is not empty.");
 };
+
+/**
+ * @param {string} rollno
+ * @param {Number} roomno
+ */
+const applyforRoommate = async (approllno, roomno) => {
+    const room = await Room.findOne({ roomno });
+    if (room.occupants.length != 1) {
+        throw new Error("Sorry, this room is full.");
+    } else {
+    const rollno = room.occupants.pop();
+    const resident = await User.findOne({ rollno });
+    resident.applications.push(approllno);
+    await resident.save();
+    }
+
+}
 
 /**
  * @param {string} rollno

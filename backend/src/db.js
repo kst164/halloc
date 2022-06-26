@@ -25,15 +25,19 @@ const userSchema = new mongoose.Schema({
         unique: true,
         index: true
     }
+    applications: {
+        type: [String], // rollno
+        required: true,
+    }
 });
 
 const roomSchema = new mongoose.Schema({
     _id: false,
-    floor: {
+    floorno: {
         type: Number,
         required: true
     },
-    room: {
+    roomno: {
         type: Number,
         required: true,
         unique: true,

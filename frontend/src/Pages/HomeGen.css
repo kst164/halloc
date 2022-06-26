@@ -1,14 +1,14 @@
 .navbar {
     background-color: rgb(13, 4, 63);
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 3%;
+    padding-right: 3%;
     min-height: 75px;
 }
 
 .sidebar {
     margin: 0;
     padding-left: 0;
-    width: 200px;
+    width: 12%;
     background-color: #F2EBE9;
     position: fixed;
     height: 100%;
@@ -16,7 +16,7 @@
 }
 
 .sidebar h4 {
-    padding: 16px;
+    padding: 1%;
     background-color: #A5BECC;
     color: black;    
 }
@@ -24,23 +24,23 @@
 .sidebar a {
     display: block;
     color: black;
-    padding: 16px;
+    padding: 1%;
     text-decoration: none;
 }
 
-.sidebar a:hover {
+.sidebar a.myFloor:hover{
     background-color: #A5BECC;
     color: white;
 }
 
 .nav-link a {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
 div.content {
-    margin-left: 200px;
-    padding: 25px 50px;
+    margin-left: 12%;
+    padding: 1.5% 3%;
     height: 1000px;
     position: fixed;
 }

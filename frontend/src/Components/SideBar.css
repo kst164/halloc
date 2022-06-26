@@ -1,16 +1,17 @@
 .avl{
-    background-color: rgb(47, 149, 250);
+    color: rgb(47, 149, 250);
 }
 
 .bkd{
-    background-color: yellow;
+    color: rgb(237, 169, 24);
 }
 
 .occ{
-    background-color: rgb(173, 171, 171);
+    color: rgb(173, 171, 171);
 }
 
 
-.breadcrumb-item{
-    text-align: center;
+.floorStats{
+    padding-left: 5%;
+    padding-right: 5%
 }

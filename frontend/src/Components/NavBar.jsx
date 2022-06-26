@@ -16,7 +16,7 @@ class NavBar extends Component {
     return this.state.options.map((myOption) => {
       console.log(myOption);
       return (
-        <li key={myOption} className="nav-item fs-4">
+        <li key={myOption.name} className="nav-item fs-4">
           <a className="nav-link text-end" href={myOption.link}>
             {myOption.name}
           </a>

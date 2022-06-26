@@ -3,20 +3,27 @@ import React, { Component } from "react";
 class FloorStats extends Component {
   state = {};
 
-  //Render stuff
+  //Render stuff (Each floor button and rooms' status)
   render() {
     return (
-      <React.Fragment>
-        {/*Render the anchor tag*/}
-        <a href="#sh*t">Floor #{this.props.level}</a>
+      <div className="floorStats">
+        {/*Rendering Floor number*/}
+        <a
+          className="myFloor"
+          onClick={() => {
+            this.props.changeFloor(this.props.floor.level);
+          }}
+        >
+          Floor #{this.props.floor.level}
+        </a>
 
-        {/*Breadcrumbs*/}
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item avl">{this.props.available}</li>
-          <li class="breadcrumb-item bkd">{this.props.booked}</li>
-          <li class="breadcrumb-item occ">{this.props.occupied}</li>
+        {/*Rendering Breadcrumbs*/}
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item avl">{this.props.floor.available}</li>
+          <li className="breadcrumb-item bkd">{this.props.floor.booked}</li>
+          <li className="breadcrumb-item occ">{this.props.floor.occupied}</li>
         </ol>
-      </React.Fragment>
+      </div>
     );
   }
 }

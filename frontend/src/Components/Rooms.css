@@ -45,18 +45,18 @@
   }
   
   .room0 {
-    background: blue;
+    background: rgb(47, 149, 250);
     color: white;
   }
   
   
   .room1 {
-    background: yellow;
+    background: rgb(237, 169, 24);
   }
   
   
   .room2 {
-    background: grey;
+    background: rgb(173, 171, 171);
     color: white;
   }
   

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // import Login from './Pages/Login';
 // import HomeLog from './Pages/HomeLog';
 // import {BrowserRouter,Routes,Route} from 'react-router-dom';
-import MyRoom from './Pages/MyRoom';
+import Grid from './Pages/Grid';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 class App extends Component {
     state = {}
@@ -21,7 +21,7 @@ class App extends Component {
             // </BrowserRouter>
             <BrowserRouter>
               <Routes>
-                <Route path='/' element={<MyRoom />} />
+                <Route path='/' element={<Grid />} />
               </Routes>
             </BrowserRouter>
         );

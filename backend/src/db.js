@@ -1,8 +1,14 @@
 // newUserConnect
 // addUserToRoom
 //   giveUserRoom
-//   makeUserRoommate -- DONE TILL HERE
+//   makeUserRoommate 
+// applyforRoommate
 // fetchFloorData
+// -- DONE TILL HERE
+// myRoomfn (roomno?, occupants?, applicants?)
+    
+         
+
 
 const mongoose = require('mongoose');
 
@@ -24,11 +30,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
         index: true
-    }
-    applications: {
-        type: [String], // rollno
-        required: true,
-    }
+    },
 });
 
 const roomSchema = new mongoose.Schema({
@@ -47,6 +49,10 @@ const roomSchema = new mongoose.Schema({
         type: [String], // rollno
         required: true,
         validate: (occs) => occs.length <= 2
+    },
+    applications: {
+        type: [String], // rollno
+        required: false,
     }
 });
 
@@ -82,16 +88,15 @@ const newUserConnect = (name, rollno) => {
     });
 };
 
+
 /**
  * @param {string} rollno
  * @param {Number} roomno
- * @param {Number} expectedMembers
- * @param {string} errorMsg
  */
-const addUserToRoom = async (rollno, roomno, expectedMembers, errorMsg) => {
-    const room = await Room.findOne({ roomno });
-    if (room.occupants.length != expectedMembers) {
-        throw new Error(errorMsg);
+const giveUserRoom = async (rollno, roomno) => {
+    const room = await Room.findOne({ roomno }).exec();
+    if (room.occupants.length != 0) {
+        throw new Error("Sorry, this room is not empty.");
     } else {
         room.occupants.push(rollno);
         await room.save();
@@ -99,45 +104,71 @@ const addUserToRoom = async (rollno, roomno, expectedMembers, errorMsg) => {
 };
 
 /**
- * @param {string} rollno
+ * @param {string} occrollno
+ * @param {string} approllno
  * @param {Number} roomno
  */
-const giveUserRoom = (rollno, roomno) => {
-    return addUserToRoom(rollno, roomno, 0, "Sorry, this room is not empty.");
-};
+const makeUserRoommate = async (occrollno, roomno, approllno) => {
+    
+    const room = await Room.findOne({ roomno }).exec();
+    if (room.occupants.length != 1) {
+        throw new Error("Sorry this room is now full.");
+    } else if (room.occupants[0] != occrollno) {
+        throw new Error("Mind your own business.")
+    }
+    else {
+        room.occupants.push(approllno);
+        await room.save();
+    }
+}
+
 
 /**
  * @param {string} rollno
  * @param {Number} roomno
  */
-const applyforRoommate = async (approllno, roomno) => {
-    const room = await Room.findOne({ roomno });
+ const applyforRoommate = async (approllno, roomno) => {
+    const room = await Room.findOne({ roomno }).exec();
     if (room.occupants.length != 1) {
         throw new Error("Sorry, this room is full.");
     } else {
-    const rollno = room.occupants.pop();
-    const resident = await User.findOne({ rollno });
-    resident.applications.push(approllno);
-    await resident.save();
+    room.applications.push(approllno);
+    await room.save();
     }
 
 }
 
-/**
- * @param {string} rollno
- * @param {Number} roomno
- */
-const makeUserRoommate = (rollno, roomno) => {
-    return addUserToRoom(rollno, roomno, 1, "Sorry this room is now full");
-};
+
 
 /** Return members of each room on each floor
  * @param {Number} floor
  */
-const fetchFloorData = (floor) => {
-    // TODO
-    return Room.find({ floor });
+
+const fetchFloorData = async(floorno) => {
+    const roomDocs = await Room.find({ floorno }).exec();
+    const roomrollnos = roomDocs.flatMap(room => room.occupants);
+    const usersinfloors = await User.find({"rollno" : {"$in" : roomrollnos}}).exec()
+    const rollnotoname = {}
+    for (user in usersinfloors){
+        rollnotoname[user.rollno] = user.name;
+    }
+    const floor = []
+    for (roomdoc in roomDocs){
+        const room = {};
+        room.roomno = roomdoc.roomno;
+        room.occupants = roomdoc.occupants.map(rollno => ({
+            rollno : rollno,
+            name : rollnotoname[rollno],
+        }));
+        floor.push(room);
+    }
+    return floor;
+    
 };
+
+const myRoom = async(rollno) => {
+    // TODO     
+}
 
 // TODO in future: in memory database
 

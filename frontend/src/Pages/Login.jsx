@@ -56,7 +56,7 @@ function Login() {
             <h3>You logged in as {loginData.email}</h3>
             <button onClick={handleLogout}>Logout</button>
             <GoogleLogout
-              buttonText='Logout'
+              buttonText='Logout doesnt work'
               onClick={handleLogout}
             ></GoogleLogout>
           </div>

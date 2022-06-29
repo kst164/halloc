@@ -21,6 +21,7 @@ class NavBar extends Component {
             {myOption.name}
           </Link>
         </li>
+        
       );
     });
   };

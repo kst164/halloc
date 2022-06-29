@@ -1,0 +1,18 @@
+.navbar {
+    background-color: rgb(13, 4, 63);
+    padding-left: 3%;
+    padding-right: 3%;
+    min-height: 75px;
+}
+
+.nav-link a {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+div.content {
+    margin-left: 1%;
+    padding: 1.5% 3%;
+    height: 1000px;
+    position: fixed;
+}

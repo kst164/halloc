@@ -44,9 +44,9 @@ class HomeGen extends Component {
             <h3>The OGs</h3>
             <ol>
               <li>Kst164</li>
+              <li>KG</li>
               <li>KDB17</li>
               <li>RahuGrl</li>
-              <li>KG</li>
               <li>Magneto</li>
             </ol>
           </div>

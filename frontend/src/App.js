@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
-// import Grid from './Pages/Grid';
-// import HomeGen from './Pages/HomeGen';
-// import Login from './Pages/Login';
-// import HomeLog from './Pages/HomeLog';
-// import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import HomeGen from './Pages/HomeGen';
 import Login from './Pages/Login';
 import HomeLog from './Pages/HomeLog';
-import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import Grid from './Pages/Grid';
 import Protected from './Protected';
 class App extends Component {
     state = {}

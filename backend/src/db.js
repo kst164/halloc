@@ -1,14 +1,9 @@
 // newUserConnect
-// addUserToRoom
-//   giveUserRoom
-//   makeUserRoommate 
-// applyforRoommate
+// giveUserRoom
+// makeUserRoommate 
+// applyForRoommate
 // fetchFloorData
-// -- DONE TILL HERE
-// myRoomfn (roomno?, occupants?, applicants?)
-    
-         
-
+// myRoom {roomno?, occupants?, applicants?}
 
 const mongoose = require('mongoose');
 
@@ -16,7 +11,6 @@ const FLUSH_INTERVAL_MS = 60000;
 
 const initDB = async () => {
     await mongoose.connect(process.env.MONGO_URI);
-    return mongoose;
 }
 
 const userSchema = new mongoose.Schema({
@@ -76,8 +70,8 @@ const addUser = (name, rollno) => {
  * @param {string} name
  * @param {string} rollno
  */
-const newUserConnect = (name, rollno) => {
-    return User.updateOne({ rollno }, { name, rollno }, { upsert: true }, (err, user) => {
+const newUserConnect = async (name, rollno) => {
+    await User.updateOne({ rollno }, { name, rollno }, { upsert: true }, (err, user) => {
         if (err) {
             console.log(err);
         } else {
@@ -85,9 +79,8 @@ const newUserConnect = (name, rollno) => {
             console.log(`Name: ${user.name}`);
             console.log(`Rollno: ${user.rollno}`);
         }
-    });
+    }).exec();
 };
-
 
 /**
  * @param {string} rollno
@@ -109,7 +102,6 @@ const giveUserRoom = async (rollno, roomno) => {
  * @param {Number} roomno
  */
 const makeUserRoommate = async (occrollno, roomno, approllno) => {
-    
     const room = await Room.findOne({ roomno }).exec();
     if (room.occupants.length != 1) {
         throw new Error("Sorry this room is now full.");
@@ -122,12 +114,11 @@ const makeUserRoommate = async (occrollno, roomno, approllno) => {
     }
 }
 
-
 /**
  * @param {string} rollno
  * @param {Number} roomno
  */
- const applyforRoommate = async (approllno, roomno) => {
+ const applyForRoommate = async (approllno, roomno) => {
     const room = await Room.findOne({ roomno }).exec();
     if (room.occupants.length != 1) {
         throw new Error("Sorry, this room is full.");
@@ -135,16 +126,12 @@ const makeUserRoommate = async (occrollno, roomno, approllno) => {
     room.applications.push(approllno);
     await room.save();
     }
-
 }
-
-
 
 /** Return members of each room on each floor
  * @param {Number} floor
  */
-
-const fetchFloorData = async(floorno) => {
+const fetchFloorData = async (floorno) => {
     const roomDocs = await Room.find({ floorno }).exec();
     const roomrollnos = roomDocs.flatMap(room => room.occupants);
     const usersinfloors = await User.find({"rollno" : {"$in" : roomrollnos}}).exec()
@@ -163,25 +150,59 @@ const fetchFloorData = async(floorno) => {
         floor.push(room);
     }
     return floor;
-    
 };
 
-const myRoom = async(rollno) => {
+const myRoom = async (rollno) => {
+    // myRoomfn (roomno?, occupants?, applicants?)
     // TODO     
+    const roomDoc = await Room.findOne({
+        occupants: {
+            $elemMatch: rollno
+        }
+    }).exec().then(res => res, _err => null);
+
+    if (roomDoc === null) {
+        return {};
+    }
+
+    if (roomDoc.occupants.length === 2) {
+        return {
+            roomno: roomDoc.roomno,
+            occupants: roomDoc.occupants
+        }
+    }
+    // TODO - get applicant names
+
+    const applicantDocs = await User.find({ rollno: { $in: roomDoc.applications } }).exec();
+    const applicants = [];
+    for (let i in applicantDocs) {
+        applicants.push({
+            name: applicantDocs[i].name,
+            rollno: applicantDocs[i].rollno,
+        })
+    }
+    return {
+        roomno: roomDoc.roomno,
+        occupants: roomDoc.occupants,
+        applicants: applicants,
+    };
 }
 
 // TODO in future: in memory database
 
-/*
- *  interface User {
- *      name: string,
- *      rollno: string,
- *  }
- *  interface DB {
- *      data: Vec<[User?, User?]>
- *  }
- */
+// newUserConnect
+// giveUserRoom
+// makeUserRoommate 
+// applyforRoommate
+// fetchFloorData
+// myRoom (roomno?, occupants?, applicants?)
 
 export default {
-    initDB
+    initDB,
+    newUserConnect,
+    giveUserRoom,
+    makeUserRoommate,
+    applyForRoommate,
+    fetchFloorData,
+    myRoom
 };
